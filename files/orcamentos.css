@@ -1,0 +1,192 @@
+/* =====================================================================
+   LISTA DE ORÇAMENTOS (orcamentos.html) · Marcenaria Piata Norte · versão claude0.2
+   Estrutura: barra lateral escura (208px) + área de trabalho cinza-azulada.
+   ===================================================================== */
+
+/* ---------- CORES, FONTES E MEDIDAS ---------- */
+:root {
+  --vermelho: #ad1f23;
+  --tinta: #111111;
+  --escuro: #141414;
+  --escuro-cartao: #242426;     /* caixa de aviso dentro da barra lateral */
+  --fundo-claro: #f4f6f9;       /* fundo da área de trabalho */
+  --branco: #ffffff;
+  --linha: #dbdbdb;
+  --texto-suave: #545454;
+  --placeholder: #8c8c8c;
+  --rosa-status: #fbe3e3;       /* selo "Em produção" */
+  --cinza-selo: #eeeeee;        /* selo "Finalizado" claro */
+  --cartao-recente: #e8ecf1;    /* cartão "Mais recente" */
+  --sombra-cartao: 0 4px 14px rgba(0, 0, 0, 0.07);
+  --fonte-titulo: "Manrope", system-ui, sans-serif;
+  --fonte-texto: "Inter", system-ui, sans-serif;
+}
+
+/* ---------- BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+body#pagina-orcamentos {
+  margin: 0; font-family: var(--fonte-texto); font-size: 16px; color: var(--tinta);
+  background: var(--fundo-claro); -webkit-font-smoothing: antialiased;
+}
+#pagina-orcamentos h1, #pagina-orcamentos h2, #pagina-orcamentos p, #pagina-orcamentos ol { margin: 0; padding: 0; }
+#pagina-orcamentos ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+#pagina-orcamentos :focus-visible { outline: 3px solid var(--vermelho); outline-offset: 3px; }
+.so-leitor-de-tela { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- BOTÕES ---------- */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border-radius: 999px; border: 1.5px solid transparent;
+  font-family: var(--fonte-texto); font-weight: 600; cursor: pointer; text-align: center; white-space: nowrap;
+  transition: background-color .15s ease, color .15s ease;
+}
+.botao-grande { padding: 15px 26px; font-size: 15px; }
+.botao-medio { padding: 11px 20px; font-size: 14px; }
+.botao-mini { padding: 8px 14px; font-size: 12px; }
+.botao-vermelho { background: var(--vermelho); color: var(--branco); }
+.botao-vermelho:hover { background: #8f1519; }
+.botao-contorno { border-color: var(--tinta); color: var(--tinta); background: transparent; }
+.botao-contorno:hover { background: var(--tinta); color: var(--branco); }
+
+/* ---------- ESTRUTURA GERAL (barra lateral + área de trabalho) ---------- */
+#estrutura-sistema { display: grid; grid-template-columns: 208px minmax(0, 1fr); min-height: 100vh; }
+
+/* ---------- BARRA LATERAL ESCURA ---------- */
+#barra-lateral {
+  position: sticky; top: 0; height: 100vh;
+  display: flex; flex-direction: column; gap: 28px;
+  padding: 24px 16px; background: var(--escuro); color: var(--branco);
+}
+.logo-marca { display: inline-flex; align-items: center; gap: 10px; }
+.logo-simbolo {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 12px; background: var(--vermelho); color: var(--branco);
+  font-family: var(--fonte-titulo); font-weight: 700; font-size: 15px;
+}
+.logo-textos { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-pequeno { font-size: 9px; letter-spacing: .12em; opacity: .7; }
+.logo-nome { white-space: nowrap; font-family: var(--fonte-titulo); font-weight: 800; font-size: 18px; }
+/* Menu lateral */
+#menu-lateral { display: flex; flex-direction: column; gap: 6px; }
+.item-menu { white-space: nowrap; display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; font-size: 14px; font-weight: 600; }
+.item-menu:hover { background: rgba(255, 255, 255, .08); }
+.item-menu-icone { font-size: 13px; opacity: .7; }
+.item-menu-ativo, .item-menu-ativo:hover { background: var(--vermelho); }
+.item-menu-ativo .item-menu-icone { opacity: 1; }
+/* Caixa "Ambiente de exemplo" no fim da barra */
+#aviso-exemplo { margin-top: auto; padding: 14px; border-radius: 16px; background: var(--escuro-cartao); }
+#aviso-exemplo strong { display: block; margin-bottom: 4px; font-size: 12px; }
+#aviso-exemplo p { font-size: 12px; line-height: 1.4; opacity: .7; }
+
+/* ---------- ÁREA DE TRABALHO ---------- */
+#area-trabalho { min-width: 0; }
+#barra-superior { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 40px; }
+#caminho-pagina { font-size: 13px; }
+#usuario-logado { display: flex; align-items: center; gap: 10px; }
+#avatar-usuario {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 50%; background: var(--branco); font-size: 12px; font-weight: 600;
+}
+#nome-usuario { font-size: 13px; color: var(--texto-suave); }
+#conteudo { display: flex; flex-direction: column; gap: 28px; padding: 14px 40px 40px; }
+
+/* ---------- TOPO DA PÁGINA (título + botão) ---------- */
+#topo-pagina { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+#topo-textos { display: flex; flex-direction: column; gap: 10px; }
+#titulo-pagina { max-width: 620px; font-family: var(--fonte-titulo); font-weight: 700; font-size: 38px; line-height: 1.12; }
+#subtitulo-pagina { font-size: 15px; color: var(--texto-suave); }
+
+/* ---------- CARTÕES DE RESUMO ---------- */
+#resumo-numeros { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.cartao-resumo { display: flex; flex-direction: column; gap: 2px; padding: 20px 22px; border-radius: 20px; background: var(--branco); box-shadow: var(--sombra-cartao); }
+.resumo-rotulo { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.resumo-numero { font-family: var(--fonte-titulo); font-weight: 700; font-size: 42px; line-height: 1.2; }
+.resumo-legenda { font-size: 13px; color: var(--texto-suave); }
+.cartao-resumo-producao .resumo-rotulo, .cartao-resumo-producao .resumo-numero, .cartao-resumo-producao .resumo-legenda { color: var(--vermelho); }
+.cartao-resumo-recente { background: var(--cartao-recente); box-shadow: none; }
+.resumo-codigo { font-family: var(--fonte-titulo); font-weight: 700; font-size: 26px; line-height: 1.6; }
+
+/* ---------- BARRA DE FILTROS (abas + busca) ---------- */
+#barra-filtros { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+#abas-status { display: flex; gap: 10px; flex-wrap: wrap; }
+.aba-status {
+  padding: 10px 18px; border-radius: 999px; border: 1px solid var(--linha); background: var(--branco);
+  font-family: var(--fonte-texto); font-size: 13px; font-weight: 600; color: var(--tinta); cursor: pointer;
+}
+.aba-status:hover { border-color: var(--tinta); }
+.aba-status-ativa { background: var(--escuro); border-color: var(--escuro); color: var(--branco); }
+#busca-e-filtros { display: flex; align-items: center; gap: 10px; }
+#campo-busca {
+  width: 300px; padding: 11px 18px; border-radius: 999px; border: 1px solid var(--linha);
+  background: var(--branco); font-family: var(--fonte-texto); font-size: 13px; color: var(--tinta);
+}
+#campo-busca::placeholder { color: var(--placeholder); }
+
+/* ---------- LISTA DE ORÇAMENTOS ---------- */
+#area-lista { display: flex; flex-direction: column; gap: 10px; }
+/* Mesma grade para o cabeçalho e para cada linha (para as colunas alinharem) */
+#cabecalho-lista, .linha-orcamento {
+  display: grid; align-items: center; column-gap: 16px;
+  grid-template-columns: minmax(0, 1fr) 140px 130px 100px 130px 230px;
+}
+#cabecalho-lista { padding: 0 24px; }
+.titulo-coluna { font-size: 11px; font-weight: 600; letter-spacing: .08em; color: var(--texto-suave); }
+#lista-orcamentos { display: flex; flex-direction: column; gap: 10px; }
+.linha-orcamento { padding: 18px 24px; border-radius: 20px; background: var(--branco); box-shadow: var(--sombra-cartao); font-size: 13px; }
+.linha-destaque { box-shadow: none; outline: 1.5px solid var(--vermelho); outline-offset: -1.5px; }
+.coluna-projeto { display: flex; flex-direction: column; gap: 3px; }
+.nome-projeto { font-family: var(--fonte-titulo); font-weight: 700; font-size: 15px; }
+.codigo-orcamento { font-size: 12px; color: var(--texto-suave); }
+/* Selos de status */
+.selo-status { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.selo-em-producao { background: var(--rosa-status); color: var(--vermelho); }
+.selo-em-producao::before { content: "●"; font-size: 8px; }
+.selo-finalizado-escuro { background: var(--escuro); color: var(--branco); }
+.selo-finalizado-claro { background: var(--cinza-selo); color: var(--texto-suave); }
+.selo-finalizado-escuro::before, .selo-finalizado-claro::before { content: "✓"; font-size: 11px; }
+/* Ações da linha */
+.coluna-acoes { display: flex; align-items: center; gap: 12px; }
+.link-acao { font-size: 12px; font-weight: 600; color: var(--vermelho); }
+.link-acao:hover { text-decoration: underline; }
+/* Rodapé da lista */
+#rodape-lista { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 8px; }
+#contagem-registros { font-size: 13px; color: var(--texto-suave); }
+#paginacao { display: flex; align-items: center; gap: 10px; }
+#pagina-atual { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--vermelho); color: var(--branco); font-size: 14px; font-weight: 600; }
+#aviso-dados-demonstrativos { font-size: 12px; color: var(--texto-suave); }
+
+/* =====================================================================
+   TELAS MÉDIAS E CELULAR
+   ===================================================================== */
+@media (max-width: 1200px) {
+  #resumo-numeros { grid-template-columns: repeat(2, 1fr); }
+  #cabecalho-lista { display: none; }
+  /* Cada linha vira um cartão com os dados empilhados em duas colunas */
+  .linha-orcamento { grid-template-columns: 1fr 1fr; row-gap: 10px; }
+  .coluna-projeto { grid-column: 1 / -1; }
+  .coluna-acoes { grid-column: 1 / -1; }
+  .coluna-cliente::before, .coluna-arquiteto::before, .coluna-data::before { content: attr(data-rotulo) ": "; color: var(--texto-suave); }
+}
+
+@media (max-width: 900px) {
+  #estrutura-sistema { grid-template-columns: 1fr; }
+  /* A barra lateral vira uma faixa escura no topo */
+  #barra-lateral { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 14px 20px; }
+  #menu-lateral { flex-direction: row; flex-wrap: wrap; }
+  .item-menu { padding: 9px 12px; }
+  #aviso-exemplo { display: none; }
+  #barra-superior { padding: 14px 20px; }
+  #nome-usuario { display: none; }
+  #conteudo { padding: 8px 20px 32px; gap: 22px; }
+  #topo-pagina { flex-direction: column; align-items: stretch; }
+  #titulo-pagina { font-size: 28px; }
+  #busca-e-filtros { width: 100%; }
+  #campo-busca { flex: 1; width: auto; min-width: 0; }
+}
+
+@media (max-width: 560px) {
+  #resumo-numeros { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) { .botao { transition: none; } }

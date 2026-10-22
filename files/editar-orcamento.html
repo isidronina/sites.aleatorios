@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editar orçamento PN-2026-014 · Marcenaria Piata Norte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="editar-orcamento.css">
+</head>
+<body id="pagina-editar-orcamento">
+  <div id="estrutura-sistema">
+
+    <!-- ============ BARRA LATERAL ESCURA (logo + menu + aviso) ============ -->
+    <aside id="barra-lateral">
+      <a class="logo-marca" href="index.html" aria-label="Marcenaria Piata Norte - site público">
+        <span class="logo-simbolo">PN</span>
+        <span class="logo-textos"><span class="logo-pequeno">MARCENARIA</span><span class="logo-nome">Piata Norte</span></span>
+      </a>
+
+      <nav id="menu-lateral" aria-label="Menu do sistema">
+        <a class="item-menu item-menu-ativo" href="orcamentos.html" aria-current="page"><span class="item-menu-icone" aria-hidden="true">▤</span>Orçamentos</a>
+        <a class="item-menu" href="editar-orcamento.html"><span class="item-menu-icone" aria-hidden="true">＋</span>Novo orçamento</a>
+        <a class="item-menu" href="index.html"><span class="item-menu-icone" aria-hidden="true">↗</span>Site público</a>
+      </nav>
+
+      <div id="aviso-exemplo">
+        <strong>Ambiente de exemplo</strong>
+        <p>Nomes, clientes e valores são fictícios.</p>
+      </div>
+    </aside>
+
+    <!-- ============ ÁREA DE TRABALHO ============ -->
+    <div id="area-trabalho">
+
+      <header id="barra-superior">
+        <p id="caminho-pagina">Sistema de orçamentos / Editar orçamento</p>
+        <div id="usuario-logado">
+          <span id="avatar-usuario" aria-hidden="true">MA</span>
+          <span id="nome-usuario">Mariano Alves da Silva</span>
+        </div>
+      </header>
+
+      <main id="conteudo">
+        <a id="link-voltar-lista" href="orcamentos.html">← Todos os orçamentos</a>
+
+        <!-- Título do orçamento -->
+        <div id="topo-pagina">
+          <p id="rotulo-pagina">Editar orçamento · 16/10/2026</p>
+          <div id="linha-titulo">
+            <h1 id="titulo-pagina">Orçamento PN-2026-014</h1>
+            <span class="selo-status selo-em-producao">Em produção</span>
+          </div>
+          <p id="subtitulo-pagina">Cozinha e sala · Apê Horizonte</p>
+        </div>
+
+        <form id="formulario-orcamento" action="previa-pdf.html" method="get">
+
+          <!-- ----- CARTÃO 1: quem é o cliente ----- -->
+          <section class="cartao-formulario" id="secao-cliente" aria-labelledby="titulo-secao-cliente">
+            <h2 class="titulo-cartao" id="titulo-secao-cliente">Quem é o cliente?</h2>
+            <div class="grade-tres-campos">
+              <div class="campo">
+                <label class="campo-rotulo" for="campo-cliente">Cliente</label>
+                <input class="campo-entrada" id="campo-cliente" name="cliente" type="text" value="Ana Martins">
+              </div>
+              <div class="campo">
+                <label class="campo-rotulo" for="campo-arquiteto">Arquiteto</label>
+                <input class="campo-entrada" id="campo-arquiteto" name="arquiteto" type="text" value="Beatriz Costa">
+              </div>
+              <div class="campo">
+                <label class="campo-rotulo" for="campo-projeto">Projeto</label>
+                <input class="campo-entrada" id="campo-projeto" name="projeto" type="text" value="Cozinha e sala · Apê Horizonte">
+              </div>
+            </div>
+          </section>
+
+          <!-- ----- CARTÃO 2: móveis e custos ----- -->
+          <section class="cartao-formulario" id="secao-moveis" aria-labelledby="titulo-secao-moveis">
+            <div class="cabecalho-cartao">
+              <h2 class="titulo-cartao" id="titulo-secao-moveis">Móveis e custos</h2>
+              <p class="subtitulo-cartao">2 módulos · 5,00 m lineares no total. Informe os custos de cada móvel.</p>
+            </div>
+
+            <!-- Móvel 1 -->
+            <fieldset class="bloco-movel" id="movel-1">
+              <legend class="so-leitor-de-tela">Móvel 1</legend>
+              <div class="topo-movel">
+                <p class="nome-bloco-movel">Móvel 1</p>
+                <p class="quantidade-movel">Quantidade: 1</p>
+              </div>
+              <div class="campo">
+                <label class="campo-rotulo" for="movel1-nome">Nome do item</label>
+                <input class="campo-entrada" id="movel1-nome" name="movel1_nome" type="text" value="Armário inferior · cozinha">
+              </div>
+              <div class="campo">
+                <label class="campo-rotulo" for="movel1-descricao">Descrição</label>
+                <textarea class="campo-entrada campo-descricao" id="movel1-descricao" name="movel1_descricao">Base inferior para cozinha com acabamento em MDF amadeirado.</textarea>
+              </div>
+              <h3 class="titulo-grupo">Medidas (em metros)</h3>
+              <div class="grade-tres-campos">
+                <div class="campo"><label class="campo-rotulo" for="movel1-comprimento">Comprimento (m)</label><input class="campo-entrada" id="movel1-comprimento" name="movel1_comprimento" type="text" inputmode="decimal" value="3,00"></div>
+                <div class="campo"><label class="campo-rotulo" for="movel1-altura">Altura (m)</label><input class="campo-entrada" id="movel1-altura" name="movel1_altura" type="text" inputmode="decimal" value="0,90"></div>
+                <div class="campo"><label class="campo-rotulo" for="movel1-profundidade">Profundidade (m)</label><input class="campo-entrada" id="movel1-profundidade" name="movel1_profundidade" type="text" inputmode="decimal" value="0,60"></div>
+              </div>
+              <h3 class="titulo-grupo">Custos</h3>
+              <div class="grade-tres-campos">
+                <div class="campo"><label class="campo-rotulo" for="movel1-madeira">Valor da madeira</label><input class="campo-entrada" id="movel1-madeira" name="movel1_madeira" type="text" inputmode="decimal" value="R$ 2.700,00"></div>
+                <div class="campo"><label class="campo-rotulo" for="movel1-insumos">Insumos (total)</label><input class="campo-entrada" id="movel1-insumos" name="movel1_insumos" type="text" inputmode="decimal" value="R$ 520,00"></div>
+                <div class="campo"><label class="campo-rotulo" for="movel1-mao-de-obra">Mão de obra</label><input class="campo-entrada" id="movel1-mao-de-obra" name="movel1_mao_de_obra" type="text" inputmode="decimal" value="R$ 1.000,00"></div>
+              </div>
+              <div class="subtotal-movel">
+                <span class="subtotal-rotulo">Subtotal do móvel</span>
+                <strong class="subtotal-valor">R$ 4.220,00</strong>
+              </div>
+            </fieldset>
+
+            <!-- Móvel 2 -->
+            <fieldset class="bloco-movel" id="movel-2">
+              <legend class="so-leitor-de-tela">Móvel 2</legend>
+              <div class="topo-movel">
+                <p class="nome-bloco-movel">Móvel 2</p>
+                <p class="quantidade-movel">Quantidade: 1</p>
+              </div>
+              <div class="campo">
+                <label class="campo-rotulo" for="movel2-nome">Nome do item</label>
+                <input class="campo-entrada" id="movel2-nome" name="movel2_nome" type="text" value="Painel com rack · sala">
+              </div>
+              <div class="campo">
+                <label class="campo-rotulo" for="movel2-descricao">Descrição</label>
+                <textarea class="campo-entrada campo-descricao" id="movel2-descricao" name="movel2_descricao">Painel vertical com rack para sala com acabamento em MDF amadeirado.</textarea>
+              </div>
+              <h3 class="titulo-grupo">Medidas (em metros)</h3>
+              <div class="grade-tres-campos">
+                <div class="campo"><label class="campo-rotulo" for="movel2-comprimento">Comprimento (m)</label><input class="campo-entrada" id="movel2-comprimento" name="movel2_comprimento" type="text" inputmode="decimal" value="2,00"></div>
+                <div class="campo"><label class="campo-rotulo" for="movel2-altura">Altura (m)</label><input class="campo-entrada" id="movel2-altura" name="movel2_altura" type="text" inputmode="decimal" value="2,40"></div>
+                <div class="campo"><label class="campo-rotulo" for="movel2-profundidade">Profundidade (m)</label><input class="campo-entrada" id="movel2-profundidade" name="movel2_profundidade" type="text" inputmode="decimal" value="0,35"></div>
+              </div>
+              <h3 class="titulo-grupo">Custos</h3>
+              <div class="grade-tres-campos">
+                <div class="campo"><label class="campo-rotulo" for="movel2-madeira">Valor da madeira</label><input class="campo-entrada" id="movel2-madeira" name="movel2_madeira" type="text" inputmode="decimal" value="R$ 1.800,00"></div>
+                <div class="campo"><label class="campo-rotulo" for="movel2-insumos">Insumos (total)</label><input class="campo-entrada" id="movel2-insumos" name="movel2_insumos" type="text" inputmode="decimal" value="R$ 280,00"></div>
+                <div class="campo"><label class="campo-rotulo" for="movel2-mao-de-obra">Mão de obra</label><input class="campo-entrada" id="movel2-mao-de-obra" name="movel2_mao_de_obra" type="text" inputmode="decimal" value="R$ 700,00"></div>
+              </div>
+              <div class="subtotal-movel">
+                <span class="subtotal-rotulo">Subtotal do móvel</span>
+                <strong class="subtotal-valor">R$ 2.780,00</strong>
+              </div>
+            </fieldset>
+
+            <button class="botao botao-contorno botao-medio botao-adicionar-movel" id="botao-adicionar-movel" type="button">＋ Adicionar móvel</button>
+          </section>
+
+          <!-- ----- CARTÃO 3: pagamento e prazo ----- -->
+          <section class="cartao-formulario" id="secao-pagamento" aria-labelledby="titulo-secao-pagamento">
+            <h2 class="titulo-cartao" id="titulo-secao-pagamento">Pagamento e prazo</h2>
+            <div class="grade-dois-campos">
+              <div class="campo">
+                <label class="campo-rotulo" for="campo-pagamento">Pagamento</label>
+                <input class="campo-entrada" id="campo-pagamento" name="pagamento" type="text" value="50% na aprovação e 50% na entrega e instalação.">
+                <p class="campo-nota">Entrada: R$ 3.500,00 · saldo: R$ 3.500,00.</p>
+              </div>
+              <div class="campo">
+                <label class="campo-rotulo" for="campo-prazo">Prazo de execução</label>
+                <input class="campo-entrada" id="campo-prazo" name="prazo" type="text" value="35 dias úteis">
+                <p class="campo-nota">Contado após aprovação e conferência das medidas.</p>
+              </div>
+            </div>
+            <p id="nota-escopo">O escopo inclui fabricação e instalação dos dois móveis. Não inclui eletrodomésticos ou obras civis.</p>
+          </section>
+
+          <!-- ----- FAIXA VERMELHA: preço atualizado (fica embaixo do formulário) ----- -->
+          <section id="resumo-preco" aria-labelledby="titulo-resumo-preco">
+            <div id="resumo-valor-total">
+              <h2 id="titulo-resumo-preco">Preço atualizado</h2>
+              <p id="preco-total">R$ 7.000,00</p>
+              <p id="nota-preco">Sem margem ou taxas adicionais neste exemplo.</p>
+            </div>
+
+            <ul id="resumo-valores-moveis">
+              <li class="resumo-item-movel"><span>Armário inferior · cozinha</span><strong>R$ 4.220,00</strong></li>
+              <li class="resumo-item-movel"><span>Painel com rack · sala</span><strong>R$ 2.780,00</strong></li>
+            </ul>
+
+            <div id="resumo-botoes">
+              <button class="botao botao-branco botao-medio" id="botao-salvar-orcamento" type="button">Salvar orçamento</button>
+              <button class="botao botao-contorno-claro botao-medio" id="botao-visualizar-orcamento" type="submit">Visualizar orçamento ↗</button>
+            </div>
+          </section>
+        </form>
+
+        <p id="nota-revisao">Revisão 01 · Valores em reais · Medidas em metros.</p>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

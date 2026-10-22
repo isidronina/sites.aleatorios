@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar · Marcenaria Piata Norte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body id="pagina-login">
+
+  <!-- ============ CABEÇALHO DO CELULAR (só aparece em telas pequenas) ============ -->
+  <header id="cabecalho-celular">
+    <a class="logo-marca" href="index.html" aria-label="Marcenaria Piata Norte - página inicial">
+      <span class="logo-simbolo">PN</span>
+      <span class="logo-textos"><span class="logo-pequeno">MARCENARIA</span><span class="logo-nome">Piata Norte</span></span>
+    </a>
+    <a class="botao botao-contorno botao-pequeno" href="index.html">← Voltar ao site</a>
+  </header>
+
+  <!-- ============ PAINEL ESCURO DE BOAS-VINDAS (lado esquerdo no computador, faixa no topo no celular) ============ -->
+  <aside id="painel-boas-vindas">
+    <a class="logo-marca logo-marca-clara" id="logo-painel" href="index.html" aria-label="Marcenaria Piata Norte - página inicial">
+      <span class="logo-simbolo">PN</span>
+      <span class="logo-textos"><span class="logo-pequeno">MARCENARIA</span><span class="logo-nome">Piata Norte</span></span>
+    </a>
+
+    <div id="mensagem-boas-vindas">
+      <h2 id="titulo-boas-vindas">O móvel certo para o seu lar começa aqui.</h2>
+      <p id="texto-boas-vindas">Entre na sua conta e acompanhe seu projeto com a gente.</p>
+    </div>
+
+    <div id="assinatura-painel">
+      <strong class="assinatura-nome">Marcenaria Piata Norte</strong>
+      <p class="assinatura-frase">Móveis sob medida. Feitos com cuidado e conversa boa.</p>
+    </div>
+  </aside>
+
+  <!-- ============ ÁREA DO FORMULÁRIO (lado direito) ============ -->
+  <main id="area-formulario">
+    <div id="caixa-formulario">
+      <a id="link-voltar-site" href="index.html">← Voltar ao site</a>
+
+      <div id="titulo-formulario">
+        <h1>Bem-vindo de volta!</h1>
+        <p>Entre com seus dados para acessar sua conta.</p>
+      </div>
+
+      <!-- Ao entrar, leva para a lista de orçamentos (demonstração, sem validação real) -->
+      <form id="formulario-login" action="orcamentos.html" method="get">
+        <div class="campo">
+          <label class="campo-rotulo" for="login-email">E-mail</label>
+          <input class="campo-entrada" id="login-email" name="email" type="email" placeholder="seu@email.com" autocomplete="email" required>
+        </div>
+
+        <div class="campo">
+          <div class="campo-rotulo-linha">
+            <label class="campo-rotulo" for="login-senha">Senha</label>
+            <a class="link-esqueci-senha" href="#">Esqueci minha senha</a>
+          </div>
+          <div class="campo-com-botao">
+            <input class="campo-entrada" id="login-senha" name="senha" type="password" placeholder="••••••••" autocomplete="current-password" required>
+            <button class="botao-mostrar-senha" id="botao-mostrar-senha" type="button" aria-controls="login-senha" aria-pressed="false">Mostrar</button>
+          </div>
+        </div>
+
+        <button class="botao botao-vermelho botao-grande botao-largura-total" id="botao-entrar-conta" type="submit">Entrar na minha conta</button>
+
+        <div id="divisor-ou" role="separator"><span>ou</span></div>
+
+        <a class="botao botao-contorno botao-grande botao-largura-total" id="botao-entrar-whatsapp" href="#">Entrar pelo WhatsApp</a>
+
+        <p id="chamada-cadastro">Não tem conta? <a href="cadastro.html">Cadastre-se grátis</a></p>
+      </form>
+    </div>
+  </main>
+
+  <!-- ============ RODAPÉ DO CELULAR (só aparece em telas pequenas) ============ -->
+  <footer id="rodape-celular">
+    <strong class="assinatura-nome">Marcenaria Piata Norte</strong>
+    <p class="assinatura-frase">Móveis sob medida. Feitos com cuidado e conversa boa.</p>
+  </footer>
+
+  <script>
+    /* Botão "Mostrar" / "Ocultar" da senha */
+    (function () {
+      var botao = document.getElementById('botao-mostrar-senha');
+      var campo = document.getElementById('login-senha');
+      botao.addEventListener('click', function () {
+        var mostrando = campo.type === 'text';
+        campo.type = mostrando ? 'password' : 'text';
+        botao.textContent = mostrando ? 'Mostrar' : 'Ocultar';
+        botao.setAttribute('aria-pressed', String(!mostrando));
+      });
+    })();
+  </script>
+</body>
+</html>

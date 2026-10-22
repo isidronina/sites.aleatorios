@@ -1,0 +1,167 @@
+/* =====================================================================
+   EDITAR ORÇAMENTO (editar-orcamento.html) · Marcenaria Piata Norte · versão claude0.2
+   Estrutura: barra lateral escura + formulário em cartões brancos.
+   A faixa vermelha "Preço atualizado" fica EMBAIXO do formulário, na largura toda.
+   ===================================================================== */
+
+/* ---------- CORES, FONTES E MEDIDAS ---------- */
+:root {
+  --vermelho: #ad1f23;
+  --tinta: #111111;
+  --escuro: #141414;
+  --escuro-cartao: #242426;
+  --fundo-claro: #f4f6f9;
+  --branco: #ffffff;
+  --linha: #dbdbdb;
+  --texto-suave: #545454;
+  --placeholder: #8c8c8c;
+  --rosa-status: #fbe3e3;
+  --sombra-cartao: 0 4px 14px rgba(0, 0, 0, 0.07);
+  --fonte-titulo: "Manrope", system-ui, sans-serif;
+  --fonte-texto: "Inter", system-ui, sans-serif;
+}
+
+/* ---------- BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+body#pagina-editar-orcamento {
+  margin: 0; font-family: var(--fonte-texto); font-size: 16px; color: var(--tinta);
+  background: var(--fundo-claro); -webkit-font-smoothing: antialiased;
+}
+#pagina-editar-orcamento h1, #pagina-editar-orcamento h2, #pagina-editar-orcamento h3, #pagina-editar-orcamento p, #pagina-editar-orcamento ul { margin: 0; padding: 0; }
+#pagina-editar-orcamento ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+#pagina-editar-orcamento :focus-visible { outline: 3px solid var(--vermelho); outline-offset: 3px; }
+.so-leitor-de-tela { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- BOTÕES ---------- */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border-radius: 999px; border: 1.5px solid transparent;
+  font-family: var(--fonte-texto); font-weight: 600; cursor: pointer; text-align: center; white-space: nowrap;
+  transition: background-color .15s ease, color .15s ease;
+}
+.botao-medio { padding: 12px 20px; font-size: 14px; }
+.botao-contorno { border-color: var(--tinta); color: var(--tinta); background: transparent; }
+.botao-contorno:hover { background: var(--tinta); color: var(--branco); }
+.botao-branco { background: var(--branco); color: var(--tinta); }
+.botao-branco:hover { background: #f9ecec; }
+.botao-contorno-claro { border-color: var(--branco); color: var(--branco); background: transparent; }
+.botao-contorno-claro:hover { background: var(--branco); color: var(--tinta); }
+
+/* ---------- ESTRUTURA GERAL ---------- */
+#estrutura-sistema { display: grid; grid-template-columns: 208px minmax(0, 1fr); min-height: 100vh; }
+
+/* ---------- BARRA LATERAL ESCURA ---------- */
+#barra-lateral { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 28px; padding: 24px 16px; background: var(--escuro); color: var(--branco); }
+.logo-marca { display: inline-flex; align-items: center; gap: 10px; }
+.logo-simbolo { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 12px; background: var(--vermelho); color: var(--branco); font-family: var(--fonte-titulo); font-weight: 700; font-size: 15px; }
+.logo-textos { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-pequeno { font-size: 9px; letter-spacing: .12em; opacity: .7; }
+.logo-nome { white-space: nowrap; font-family: var(--fonte-titulo); font-weight: 800; font-size: 18px; }
+#menu-lateral { display: flex; flex-direction: column; gap: 6px; }
+.item-menu { white-space: nowrap; display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; font-size: 14px; font-weight: 600; }
+.item-menu:hover { background: rgba(255, 255, 255, .08); }
+.item-menu-icone { font-size: 13px; opacity: .7; }
+.item-menu-ativo, .item-menu-ativo:hover { background: var(--vermelho); }
+.item-menu-ativo .item-menu-icone { opacity: 1; }
+#aviso-exemplo { margin-top: auto; padding: 14px; border-radius: 16px; background: var(--escuro-cartao); }
+#aviso-exemplo strong { display: block; margin-bottom: 4px; font-size: 12px; }
+#aviso-exemplo p { font-size: 12px; line-height: 1.4; opacity: .7; }
+
+/* ---------- ÁREA DE TRABALHO ---------- */
+#area-trabalho { min-width: 0; }
+#barra-superior { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 40px; }
+#caminho-pagina { font-size: 13px; }
+#usuario-logado { display: flex; align-items: center; gap: 10px; }
+#avatar-usuario { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--branco); font-size: 12px; font-weight: 600; }
+#nome-usuario { font-size: 13px; color: var(--texto-suave); }
+#conteudo { display: flex; flex-direction: column; gap: 28px; padding: 14px 40px 40px; }
+#link-voltar-lista { align-self: flex-start; font-size: 14px; font-weight: 600; }
+#link-voltar-lista:hover { text-decoration: underline; }
+
+/* ---------- TÍTULO DO ORÇAMENTO ---------- */
+#topo-pagina { display: flex; flex-direction: column; gap: 10px; }
+#rotulo-pagina { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--vermelho); }
+#linha-titulo { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+#titulo-pagina { font-family: var(--fonte-titulo); font-weight: 700; font-size: 36px; line-height: 1.15; }
+#subtitulo-pagina { font-size: 15px; color: var(--texto-suave); }
+.selo-status { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.selo-em-producao { background: var(--rosa-status); color: var(--vermelho); }
+.selo-em-producao::before { content: "●"; font-size: 8px; }
+
+/* ---------- FORMULÁRIO (cartões brancos empilhados) ---------- */
+#formulario-orcamento { display: flex; flex-direction: column; gap: 20px; }
+.cartao-formulario { display: flex; flex-direction: column; gap: 18px; padding: 28px; border-radius: 24px; background: var(--branco); box-shadow: var(--sombra-cartao); }
+.cabecalho-cartao { display: flex; flex-direction: column; gap: 4px; }
+.titulo-cartao { font-family: var(--fonte-titulo); font-weight: 700; font-size: 22px; }
+.subtitulo-cartao { font-size: 13px; color: var(--texto-suave); }
+/* Grades de campos */
+.grade-tres-campos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grade-dois-campos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.campo { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.campo-rotulo { font-size: 13px; font-weight: 600; }
+.campo-entrada {
+  width: 100%; padding: 14px; border-radius: 12px; border: 1px solid var(--linha);
+  background: var(--fundo-claro); font-family: var(--fonte-texto); font-size: 14px; color: var(--tinta);
+}
+.campo-entrada::placeholder { color: var(--placeholder); }
+.campo-nota { font-size: 12px; color: var(--texto-suave); }
+.campo-descricao { min-height: 68px; resize: vertical; }
+
+/* Blocos de cada móvel (dentro do cartão "Móveis e custos") */
+.bloco-movel { display: flex; flex-direction: column; gap: 16px; margin: 0; padding: 22px; border: 0; border-radius: 20px; background: var(--fundo-claro); }
+.bloco-movel .campo-entrada { background: var(--branco); }
+.topo-movel { display: flex; align-items: center; justify-content: space-between; }
+.nome-bloco-movel { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--vermelho); }
+.quantidade-movel { font-size: 13px; font-weight: 600; color: var(--texto-suave); }
+.titulo-grupo { font-family: var(--fonte-titulo); font-weight: 700; font-size: 15px; }
+.subtotal-movel { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 14px; background: var(--branco); }
+.subtotal-rotulo { font-size: 14px; color: var(--texto-suave); }
+.subtotal-valor { font-family: var(--fonte-titulo); font-weight: 700; font-size: 18px; }
+.botao-adicionar-movel { align-self: flex-start; }
+#nota-escopo { font-size: 13px; line-height: 1.45; color: var(--texto-suave); }
+
+/* ---------- FAIXA VERMELHA "PREÇO ATUALIZADO" (embaixo do formulário) ---------- */
+#resumo-preco {
+  display: flex; align-items: center; justify-content: space-between; gap: 48px;
+  padding: 32px 40px; border-radius: 28px; background: var(--vermelho); color: var(--branco);
+}
+#resumo-valor-total { display: flex; flex-direction: column; gap: 8px; max-width: 300px; }
+#titulo-resumo-preco { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+#preco-total { font-family: var(--fonte-titulo); font-weight: 700; font-size: 44px; line-height: 1.1; }
+#nota-preco { font-size: 12px; opacity: .8; }
+#resumo-valores-moveis { display: flex; flex-direction: column; gap: 12px; width: 380px; max-width: 100%; }
+.resumo-item-movel { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 13px; }
+.resumo-item-movel strong { font-size: 14px; font-weight: 600; white-space: nowrap; }
+#resumo-botoes { display: flex; flex-direction: column; gap: 12px; width: 260px; }
+#nota-revisao { font-size: 12px; color: var(--texto-suave); }
+
+/* =====================================================================
+   TELAS MÉDIAS E CELULAR
+   ===================================================================== */
+@media (max-width: 1200px) {
+  #resumo-preco { flex-wrap: wrap; gap: 24px 40px; }
+  #resumo-valores-moveis { flex: 1; min-width: 260px; }
+}
+
+@media (max-width: 900px) {
+  #estrutura-sistema { grid-template-columns: 1fr; }
+  /* A barra lateral vira uma faixa escura no topo */
+  #barra-lateral { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 14px 20px; }
+  #menu-lateral { flex-direction: row; flex-wrap: wrap; }
+  .item-menu { padding: 9px 12px; }
+  #aviso-exemplo { display: none; }
+  #barra-superior { padding: 14px 20px; }
+  #nome-usuario { display: none; }
+  #conteudo { padding: 8px 20px 32px; gap: 22px; }
+  #titulo-pagina { font-size: 28px; }
+  .cartao-formulario { padding: 20px; }
+  .grade-tres-campos, .grade-dois-campos { grid-template-columns: 1fr; }
+  .bloco-movel { padding: 16px; }
+  #resumo-preco { flex-direction: column; align-items: stretch; padding: 24px; }
+  #resumo-valor-total { max-width: none; }
+  #resumo-valores-moveis { width: auto; }
+  #resumo-botoes { width: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) { .botao { transition: none; } }

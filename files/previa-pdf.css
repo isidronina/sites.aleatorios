@@ -1,0 +1,169 @@
+/* =====================================================================
+   PRÉVIA DO PDF (previa-pdf.html) · Marcenaria Piata Norte · versão claude0.2
+   Estrutura: barra lateral escura + mesa cinza com a folha A4 + cartão de conferência.
+   Na impressão, só a folha do orçamento sai no papel.
+   ===================================================================== */
+
+/* ---------- CORES, FONTES E MEDIDAS ---------- */
+:root {
+  --vermelho: #ad1f23;
+  --tinta: #111111;
+  --escuro: #141414;
+  --escuro-cartao: #242426;
+  --fundo-claro: #f4f6f9;
+  --mesa: #e6e9f0;              /* cor da "mesa" em volta da folha */
+  --branco: #ffffff;
+  --linha: #dbdbdb;
+  --texto-suave: #545454;
+  --rosa-suave: #f9ecec;
+  --sombra-cartao: 0 4px 14px rgba(0, 0, 0, 0.07);
+  --sombra-folha: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --fonte-titulo: "Manrope", system-ui, sans-serif;
+  --fonte-texto: "Inter", system-ui, sans-serif;
+  --fonte-documento: "Noto Serif", Georgia, serif;          /* texto corrido do documento */
+  --fonte-assinatura: "Great Vibes", cursive;                /* título e endereço do documento */
+  --fonte-assinatura-nome: "Cormorant Garamond", Georgia, serif;
+}
+
+/* ---------- BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+body#pagina-previa-pdf {
+  margin: 0; font-family: var(--fonte-texto); font-size: 16px; color: var(--tinta);
+  background: var(--fundo-claro); -webkit-font-smoothing: antialiased;
+}
+#pagina-previa-pdf h1, #pagina-previa-pdf h2, #pagina-previa-pdf p, #pagina-previa-pdf ul { margin: 0; padding: 0; }
+#pagina-previa-pdf ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+#pagina-previa-pdf :focus-visible { outline: 3px solid var(--vermelho); outline-offset: 3px; }
+
+/* ---------- BOTÕES ---------- */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border-radius: 999px; border: 1.5px solid transparent;
+  font-family: var(--fonte-texto); font-weight: 600; cursor: pointer; text-align: center; white-space: nowrap;
+  transition: background-color .15s ease, color .15s ease;
+}
+.botao-grande { padding: 15px 26px; font-size: 15px; }
+.botao-vermelho { background: var(--vermelho); color: var(--branco); }
+.botao-vermelho:hover { background: #8f1519; }
+.botao-contorno { border-color: var(--tinta); color: var(--tinta); background: transparent; }
+.botao-contorno:hover { background: var(--tinta); color: var(--branco); }
+
+/* ---------- ESTRUTURA GERAL ---------- */
+#estrutura-sistema { display: grid; grid-template-columns: 208px minmax(0, 1fr); min-height: 100vh; }
+
+/* ---------- BARRA LATERAL ESCURA ---------- */
+#barra-lateral { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 28px; padding: 24px 16px; background: var(--escuro); color: var(--branco); }
+.logo-marca { display: inline-flex; align-items: center; gap: 10px; }
+.logo-simbolo { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 12px; background: var(--vermelho); color: var(--branco); font-family: var(--fonte-titulo); font-weight: 700; font-size: 15px; }
+.logo-textos { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-pequeno { font-size: 9px; letter-spacing: .12em; opacity: .7; }
+.logo-nome { white-space: nowrap; font-family: var(--fonte-titulo); font-weight: 800; font-size: 18px; }
+#menu-lateral { display: flex; flex-direction: column; gap: 6px; }
+.item-menu { white-space: nowrap; display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; font-size: 14px; font-weight: 600; }
+.item-menu:hover { background: rgba(255, 255, 255, .08); }
+.item-menu-icone { font-size: 13px; opacity: .7; }
+.item-menu-ativo, .item-menu-ativo:hover { background: var(--vermelho); }
+.item-menu-ativo .item-menu-icone { opacity: 1; }
+#aviso-exemplo { margin-top: auto; padding: 14px; border-radius: 16px; background: var(--escuro-cartao); }
+#aviso-exemplo strong { display: block; margin-bottom: 4px; font-size: 12px; }
+#aviso-exemplo p { font-size: 12px; line-height: 1.4; opacity: .7; }
+
+/* ---------- ÁREA DE TRABALHO ---------- */
+#area-trabalho { min-width: 0; }
+#barra-superior { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 40px; }
+#caminho-pagina { font-size: 13px; }
+#usuario-logado { display: flex; align-items: center; gap: 10px; }
+#avatar-usuario { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--branco); font-size: 12px; font-weight: 600; }
+#nome-usuario { font-size: 13px; color: var(--texto-suave); }
+#conteudo { display: flex; flex-direction: column; gap: 28px; padding: 14px 40px 40px; }
+#link-voltar-orcamento { align-self: flex-start; font-size: 14px; font-weight: 600; }
+#link-voltar-orcamento:hover { text-decoration: underline; }
+
+/* ---------- TOPO DA PÁGINA (título + botões) ---------- */
+#topo-pagina { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+#topo-textos { display: flex; flex-direction: column; gap: 8px; }
+#rotulo-pagina { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--vermelho); }
+#titulo-pagina { font-family: var(--fonte-titulo); font-weight: 700; font-size: 34px; line-height: 1.15; }
+#subtitulo-pagina { font-size: 15px; color: var(--texto-suave); }
+#botoes-documento { display: flex; align-items: center; gap: 12px; }
+
+/* ---------- DOCUMENTO + CONFERÊNCIA ---------- */
+#area-documento { display: flex; align-items: flex-start; gap: 28px; }
+
+/* Mesa cinza onde fica a folha */
+#mesa-documento { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 32px; border-radius: 24px; background: var(--mesa); }
+#fim-documento { font-size: 11px; color: #8c8c8c; text-align: center; }
+
+/* Folha A4 */
+#folha-a4 {
+  width: 100%; max-width: 595px; display: flex; flex-direction: column; gap: 14px;
+  padding: 48px 52px; background: var(--branco); border: 1px solid var(--linha); box-shadow: var(--sombra-folha);
+  font-family: var(--fonte-documento); font-size: 11px; line-height: 1.5; color: var(--tinta);
+}
+#folha-a4 p { margin: 0; }
+/* Topo da folha: logo à esquerda, título e data à direita */
+#cabecalho-documento { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+#logo-documento { display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--vermelho); color: var(--branco); font-family: var(--fonte-titulo); font-weight: 700; font-size: 18px; }
+#titulo-e-data-documento { display: flex; flex-direction: column; align-items: flex-end; }
+#titulo-orcamento-documento { font-family: var(--fonte-assinatura); font-size: 38px; line-height: 1.2; }
+#data-documento { font-family: var(--fonte-assinatura); font-size: 18px; }
+#numero-documento { font-size: 9px; color: var(--texto-suave); }
+.item-documento { display: flex; flex-direction: column; gap: 14px; }
+/* Condições do orçamento */
+#titulo-condicoes-documento { margin: 0; text-align: center; font-family: var(--fonte-documento); font-size: 12px; font-weight: 700; }
+#lista-condicoes-documento li { position: relative; padding-left: 14px; }
+#lista-condicoes-documento li::before { content: "•"; position: absolute; left: 2px; }
+#valor-total-documento { font-size: 12px; font-weight: 700; }
+#atenciosamente-documento { font-weight: 700; }
+#assinatura-documento { font-family: var(--fonte-assinatura-nome); font-style: italic; font-size: 18px; }
+/* Endereço e contatos no fim da folha */
+#rodape-documento { text-align: center; font-family: var(--fonte-assinatura); font-size: 15px; line-height: 1.4; }
+
+/* Cartão "Antes de baixar, confira" */
+#cartao-conferencia { flex: 0 0 340px; display: flex; flex-direction: column; gap: 16px; padding: 24px; border-radius: 24px; background: var(--branco); box-shadow: var(--sombra-cartao); }
+#titulo-conferencia { font-family: var(--fonte-titulo); font-weight: 700; font-size: 19px; }
+#lista-conferencia { display: flex; flex-direction: column; gap: 16px; }
+.item-conferencia { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+.marca-conferencia { flex: 0 0 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--rosa-suave); color: var(--vermelho); font-size: 13px; font-weight: 600; }
+#dica-conferencia { padding: 14px 16px; border-radius: 16px; background: var(--rosa-suave); font-size: 13px; line-height: 1.45; }
+
+/* =====================================================================
+   TELAS MÉDIAS E CELULAR
+   ===================================================================== */
+@media (max-width: 1200px) {
+  #area-documento { flex-direction: column; }
+  #cartao-conferencia { flex: none; width: 100%; }
+}
+
+@media (max-width: 900px) {
+  #estrutura-sistema { grid-template-columns: 1fr; }
+  #barra-lateral { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 14px 20px; }
+  #menu-lateral { flex-direction: row; flex-wrap: wrap; }
+  .item-menu { padding: 9px 12px; }
+  #aviso-exemplo { display: none; }
+  #barra-superior { padding: 14px 20px; }
+  #nome-usuario { display: none; }
+  #conteudo { padding: 8px 20px 32px; gap: 22px; }
+  #titulo-pagina { font-size: 28px; }
+  #topo-pagina { flex-direction: column; align-items: stretch; }
+  #botoes-documento .botao { flex: 1; }
+  #mesa-documento { padding: 16px; }
+  #folha-a4 { padding: 28px 22px; }
+}
+
+/* =====================================================================
+   IMPRESSÃO: some tudo, sai só a folha A4
+   ===================================================================== */
+@media print {
+  body#pagina-previa-pdf { background: var(--branco); }
+  #barra-lateral, #barra-superior, #link-voltar-orcamento, #topo-pagina, #cartao-conferencia, #fim-documento { display: none !important; }
+  #estrutura-sistema { display: block; }
+  #conteudo { padding: 0; }
+  #area-documento { display: block; }
+  #mesa-documento { padding: 0; background: none; }
+  #folha-a4 { max-width: none; border: 0; box-shadow: none; padding: 0; }
+  @page { size: A4; margin: 18mm; }
+}
+
+@media (prefers-reduced-motion: reduce) { .botao { transition: none; } }

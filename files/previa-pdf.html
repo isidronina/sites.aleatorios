@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prévia do PDF · Orçamento PN-2026-014 · Marcenaria Piata Norte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&family=Great+Vibes&family=Inter:wght@400;600&family=Manrope:wght@700;800&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="previa-pdf.css">
+</head>
+<body id="pagina-previa-pdf">
+  <div id="estrutura-sistema">
+
+    <!-- ============ BARRA LATERAL ESCURA (logo + menu + aviso) ============ -->
+    <aside id="barra-lateral">
+      <a class="logo-marca" href="index.html" aria-label="Marcenaria Piata Norte - site público">
+        <span class="logo-simbolo">PN</span>
+        <span class="logo-textos"><span class="logo-pequeno">MARCENARIA</span><span class="logo-nome">Piata Norte</span></span>
+      </a>
+
+      <nav id="menu-lateral" aria-label="Menu do sistema">
+        <a class="item-menu item-menu-ativo" href="orcamentos.html" aria-current="page"><span class="item-menu-icone" aria-hidden="true">▤</span>Orçamentos</a>
+        <a class="item-menu" href="editar-orcamento.html"><span class="item-menu-icone" aria-hidden="true">＋</span>Novo orçamento</a>
+        <a class="item-menu" href="index.html"><span class="item-menu-icone" aria-hidden="true">↗</span>Site público</a>
+      </nav>
+
+      <div id="aviso-exemplo">
+        <strong>Ambiente de exemplo</strong>
+        <p>Nomes, clientes e valores são fictícios.</p>
+      </div>
+    </aside>
+
+    <!-- ============ ÁREA DE TRABALHO ============ -->
+    <div id="area-trabalho">
+
+      <header id="barra-superior">
+        <p id="caminho-pagina">Sistema de orçamentos / Visualizar PDF</p>
+        <div id="usuario-logado">
+          <span id="avatar-usuario" aria-hidden="true">MA</span>
+          <span id="nome-usuario">Mariano Alves da Silva</span>
+        </div>
+      </header>
+
+      <main id="conteudo">
+        <a id="link-voltar-orcamento" href="editar-orcamento.html">← Voltar ao orçamento</a>
+
+        <!-- Título + botões Baixar e Imprimir -->
+        <div id="topo-pagina">
+          <div id="topo-textos">
+            <p id="rotulo-pagina">Prévia do PDF</p>
+            <h1 id="titulo-pagina">Orçamento pronto para conferir.</h1>
+            <p id="subtitulo-pagina">PN-2026-014 · Ana Martins</p>
+          </div>
+          <div id="botoes-documento">
+            <a class="botao botao-vermelho botao-grande" id="botao-baixar-pdf" href="#" download="orcamento-PN-2026-014.pdf">Baixar PDF</a>
+            <button class="botao botao-contorno botao-grande" id="botao-imprimir" type="button">Imprimir</button>
+          </div>
+        </div>
+
+        <div id="area-documento">
+
+          <!-- Mesa cinza com a folha A4 -->
+          <section id="mesa-documento" aria-label="Pré-visualização do documento">
+            <article id="folha-a4">
+
+              <header id="cabecalho-documento">
+                <span id="logo-documento" aria-hidden="true">PN</span>
+                <div id="titulo-e-data-documento">
+                  <p id="titulo-orcamento-documento">Orçamento</p>
+                  <p id="data-documento">São Paulo, 16 de Outubro de 2026</p>
+                </div>
+              </header>
+
+              <p id="numero-documento">Orçamento PN-2026-014</p>
+              <p class="paragrafo-documento">A/c: Arquiteta Beatriz Costa.</p>
+              <p class="paragrafo-documento">Cliente Ana Martins.</p>
+              <p class="paragrafo-documento">Conforme solicitação, estamos enviando orçamento para os seguintes itens:</p>
+
+              <div class="item-documento" id="item-documento-1">
+                <p class="paragrafo-documento">1- Fabricar e instalar armário inferior para cozinha, com acabamento em MDF amadeirado.</p>
+                <p class="paragrafo-documento">Medidas: 3,00 m de comprimento, 0,90 m de altura e 0,60 m de profundidade.<br>Quantidade: 1. Valor: R$ 4.220,00</p>
+              </div>
+
+              <div class="item-documento" id="item-documento-2">
+                <p class="paragrafo-documento">2- Fabricar e instalar painel com rack para sala, com acabamento em MDF amadeirado.</p>
+                <p class="paragrafo-documento">Medidas: 2,00 m de comprimento, 2,40 m de altura e 0,35 m de profundidade.<br>Quantidade: 1. Valor: R$ 2.780,00</p>
+              </div>
+
+              <h2 id="titulo-condicoes-documento">CONDIÇÕES DO ORÇAMENTO</h2>
+              <ul id="lista-condicoes-documento">
+                <li>Prazo: 35 dias úteis após aprovação e conferência das medidas.</li>
+                <li>1 ano de garantia, observadas as condições adequadas de uso.</li>
+                <li>Pagamento: 50% na contratação e 50% na entrega e instalação.<br>Entrada de R$ 3.500,00 e saldo de R$ 3.500,00.</li>
+              </ul>
+              <p id="valor-total-documento">• O valor total é de R$ 7.000,00.</p>
+
+              <p class="paragrafo-documento">Agradecemos a oportunidade e permanecemos à disposição para quaisquer esclarecimentos.</p>
+              <p id="atenciosamente-documento">Atenciosamente,</p>
+              <p class="paragrafo-documento">Mariano Alves da Silva &amp; Homero Pereira de Santana</p>
+              <p id="assinatura-documento">Marcenaria Piatã Norte</p>
+
+              <footer id="rodape-documento">
+                <p>Piatã Norte Marcenaria</p>
+                <p>Rua José Henrique Bello 04 - Jardim Alvorada - São Paulo - SP.</p>
+                <p>Mariano Alves (11) 91854-3085</p>
+                <p>Homero Pereira (11) 96440-7514</p>
+                <p>Email: piatanorte.moveis@hotmail.com</p>
+              </footer>
+            </article>
+
+            <p id="fim-documento">Fim do documento · página 1 de 1 · PN-2026-014.pdf</p>
+          </section>
+
+          <!-- Cartão de conferência (lado direito) -->
+          <aside id="cartao-conferencia" aria-labelledby="titulo-conferencia">
+            <h2 id="titulo-conferencia">Antes de baixar, confira:</h2>
+            <ul id="lista-conferencia">
+              <li class="item-conferencia"><span class="marca-conferencia" aria-hidden="true">✓</span>Nome do cliente e do arquiteto</li>
+              <li class="item-conferencia"><span class="marca-conferencia" aria-hidden="true">✓</span>Medidas de cada móvel</li>
+              <li class="item-conferencia"><span class="marca-conferencia" aria-hidden="true">✓</span>Valor total: R$ 7.000,00</li>
+              <li class="item-conferencia"><span class="marca-conferencia" aria-hidden="true">✓</span>Prazo: 35 dias úteis</li>
+            </ul>
+            <p id="dica-conferencia">Tudo certo? É só baixar o PDF ou imprimir aqui mesmo.</p>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    /* Botão Imprimir: abre a janela de impressão (só a folha do orçamento sai no papel) */
+    document.getElementById('botao-imprimir').addEventListener('click', function () { window.print(); });
+    /* Botão Baixar PDF: nesta versão de demonstração também abre a impressão, onde dá para "Salvar como PDF" */
+    document.getElementById('botao-baixar-pdf').addEventListener('click', function (evento) { evento.preventDefault(); window.print(); });
+  </script>
+</body>
+</html>

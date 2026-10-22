@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Criar conta · Marcenaria Piata Norte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cadastro.css">
+</head>
+<body id="pagina-cadastro">
+
+  <!-- ============ CABEÇALHO DO CELULAR (só aparece em telas pequenas) ============ -->
+  <header id="cabecalho-celular">
+    <a class="logo-marca" href="index.html" aria-label="Marcenaria Piata Norte - página inicial">
+      <span class="logo-simbolo">PN</span>
+      <span class="logo-textos"><span class="logo-pequeno">MARCENARIA</span><span class="logo-nome">Piata Norte</span></span>
+    </a>
+    <a class="botao botao-contorno botao-pequeno" href="index.html">← Voltar ao site</a>
+  </header>
+
+  <!-- ============ PAINEL ESCURO DE BOAS-VINDAS (lado esquerdo no computador, faixa no topo no celular) ============ -->
+  <aside id="painel-boas-vindas">
+    <a class="logo-marca logo-marca-clara" id="logo-painel" href="index.html" aria-label="Marcenaria Piata Norte - página inicial">
+      <span class="logo-simbolo">PN</span>
+      <span class="logo-textos"><span class="logo-pequeno">MARCENARIA</span><span class="logo-nome">Piata Norte</span></span>
+    </a>
+
+    <div id="mensagem-boas-vindas">
+      <h2 id="titulo-boas-vindas">Crie sua conta e acompanhe tudo pelo seu projeto.</h2>
+      <p id="texto-boas-vindas">Em poucos passos você já pode acompanhar o seu móvel.</p>
+      <!-- Vantagens (versão do computador, dentro do painel escuro) -->
+      <ul class="lista-vantagens" id="vantagens-painel">
+        <li class="vantagem"><span class="vantagem-marca" aria-hidden="true">✓</span>Acompanhe cada etapa do seu projeto</li>
+        <li class="vantagem"><span class="vantagem-marca" aria-hidden="true">✓</span>Receba o orçamento diretamente aqui</li>
+        <li class="vantagem"><span class="vantagem-marca" aria-hidden="true">✓</span>Fale direto com a equipe quando quiser</li>
+      </ul>
+    </div>
+
+    <div id="assinatura-painel">
+      <strong class="assinatura-nome">Marcenaria Piata Norte</strong>
+      <p class="assinatura-frase">Móveis sob medida. Feitos com cuidado e conversa boa.</p>
+    </div>
+  </aside>
+
+  <!-- ============ ÁREA DO FORMULÁRIO (lado direito) ============ -->
+  <main id="area-formulario">
+    <div id="caixa-formulario">
+      <a id="link-voltar-site" href="index.html">← Voltar ao site</a>
+
+      <div id="titulo-formulario">
+        <h1>Criar minha conta</h1>
+        <p>É rápido, gratuito e sem complicação.</p>
+      </div>
+
+      <!-- Ao criar a conta, leva para o login (demonstração, sem gravação de dados) -->
+      <form id="formulario-cadastro" action="login.html" method="get">
+        <div class="linha-dois-campos" id="linha-nome">
+          <div class="campo">
+            <label class="campo-rotulo" for="cadastro-nome">Nome</label>
+            <input class="campo-entrada" id="cadastro-nome" name="nome" type="text" placeholder="Seu primeiro nome" autocomplete="given-name" required>
+          </div>
+          <div class="campo">
+            <label class="campo-rotulo" for="cadastro-sobrenome">Sobrenome</label>
+            <input class="campo-entrada" id="cadastro-sobrenome" name="sobrenome" type="text" placeholder="Sobrenome" autocomplete="family-name" required>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label class="campo-rotulo" for="cadastro-email">E-mail</label>
+          <input class="campo-entrada" id="cadastro-email" name="email" type="email" placeholder="seu@email.com" autocomplete="email" required>
+        </div>
+
+        <div class="campo">
+          <label class="campo-rotulo" for="cadastro-telefone">Telefone / WhatsApp</label>
+          <input class="campo-entrada" id="cadastro-telefone" name="telefone" type="tel" placeholder="(DDD) 9 0000-0000" autocomplete="tel">
+        </div>
+
+        <div class="linha-dois-campos" id="linha-senhas">
+          <div class="campo">
+            <label class="campo-rotulo" for="cadastro-senha">Crie uma senha</label>
+            <input class="campo-entrada" id="cadastro-senha" name="senha" type="password" placeholder="Mínimo 8 caracteres" minlength="8" autocomplete="new-password" required>
+          </div>
+          <div class="campo">
+            <label class="campo-rotulo" for="cadastro-confirmar-senha">Confirme a senha</label>
+            <input class="campo-entrada" id="cadastro-confirmar-senha" name="confirmar_senha" type="password" placeholder="Repita sua senha" minlength="8" autocomplete="new-password" required>
+          </div>
+        </div>
+        <p id="aviso-senhas" role="alert" hidden>As senhas não são iguais. Confira e tente de novo.</p>
+
+        <label id="caixa-termos">
+          <input type="checkbox" id="aceitar-termos" name="termos" required>
+          <span>Li e aceito os <a href="#">Termos de uso</a> e a <a href="#">Política de privacidade</a></span>
+        </label>
+
+        <button class="botao botao-vermelho botao-grande botao-largura-total" id="botao-criar-conta" type="submit">Criar minha conta grátis</button>
+
+        <p id="chamada-login">Já tem uma conta? <a href="login.html">Entrar</a></p>
+      </form>
+    </div>
+
+    <!-- Vantagens (versão do celular, cartão branco depois do formulário) -->
+    <div id="vantagens-celular">
+      <ul class="lista-vantagens">
+        <li class="vantagem"><span class="vantagem-marca" aria-hidden="true">✓</span>Acompanhe cada etapa do seu projeto</li>
+        <li class="vantagem"><span class="vantagem-marca" aria-hidden="true">✓</span>Receba o orçamento diretamente aqui</li>
+        <li class="vantagem"><span class="vantagem-marca" aria-hidden="true">✓</span>Fale direto com a equipe quando quiser</li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- ============ RODAPÉ DO CELULAR (só aparece em telas pequenas) ============ -->
+  <footer id="rodape-celular">
+    <strong class="assinatura-nome">Marcenaria Piata Norte</strong>
+    <p class="assinatura-frase">Móveis sob medida. Feitos com cuidado e conversa boa.</p>
+  </footer>
+
+  <script>
+    /* Confere se as duas senhas são iguais antes de enviar */
+    (function () {
+      var formulario = document.getElementById('formulario-cadastro');
+      var senha = document.getElementById('cadastro-senha');
+      var confirmar = document.getElementById('cadastro-confirmar-senha');
+      var aviso = document.getElementById('aviso-senhas');
+      formulario.addEventListener('submit', function (evento) {
+        if (senha.value !== confirmar.value) {
+          evento.preventDefault();
+          aviso.hidden = false;
+          confirmar.focus();
+        }
+      });
+      confirmar.addEventListener('input', function () { aviso.hidden = true; });
+    })();
+  </script>
+</body>
+</html>

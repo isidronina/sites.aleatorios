@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orçamentos · Marcenaria Piata Norte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="orcamentos.css">
+</head>
+<body id="pagina-orcamentos">
+  <div id="estrutura-sistema">
+
+    <!-- ============ BARRA LATERAL ESCURA (logo + menu + aviso) ============ -->
+    <aside id="barra-lateral">
+      <a class="logo-marca" href="index.html" aria-label="Marcenaria Piata Norte - site público">
+        <span class="logo-simbolo">PN</span>
+        <span class="logo-textos"><span class="logo-pequeno">MARCENARIA</span><span class="logo-nome">Piata Norte</span></span>
+      </a>
+
+      <nav id="menu-lateral" aria-label="Menu do sistema">
+        <a class="item-menu item-menu-ativo" href="orcamentos.html" aria-current="page"><span class="item-menu-icone" aria-hidden="true">▤</span>Orçamentos</a>
+        <a class="item-menu" href="editar-orcamento.html"><span class="item-menu-icone" aria-hidden="true">＋</span>Novo orçamento</a>
+        <a class="item-menu" href="index.html"><span class="item-menu-icone" aria-hidden="true">↗</span>Site público</a>
+      </nav>
+
+      <div id="aviso-exemplo">
+        <strong>Ambiente de exemplo</strong>
+        <p>Nomes, clientes e valores são fictícios.</p>
+      </div>
+    </aside>
+
+    <!-- ============ ÁREA DE TRABALHO (lado direito, fundo cinza-azulado) ============ -->
+    <div id="area-trabalho">
+
+      <!-- Barra superior: caminho da página + usuário -->
+      <header id="barra-superior">
+        <p id="caminho-pagina">Sistema de orçamentos / Orçamentos</p>
+        <div id="usuario-logado">
+          <span id="avatar-usuario" aria-hidden="true">MA</span>
+          <span id="nome-usuario">Mariano Alves da Silva</span>
+        </div>
+      </header>
+
+      <main id="conteudo">
+
+        <!-- Título + botão de novo orçamento -->
+        <div id="topo-pagina">
+          <div id="topo-textos">
+            <h1 id="titulo-pagina">Oi, Mariano! Como estão os orçamentos hoje?</h1>
+            <p id="subtitulo-pagina">Da proposta à entrega: acompanhe o trabalho da marcenaria.</p>
+          </div>
+          <a class="botao botao-vermelho botao-grande" id="botao-novo-orcamento" href="editar-orcamento.html">＋ Novo orçamento</a>
+        </div>
+
+        <!-- 4 cartões de resumo -->
+        <section id="resumo-numeros" aria-label="Resumo dos orçamentos">
+          <article class="cartao-resumo">
+            <h2 class="resumo-rotulo">Orçamentos</h2>
+            <p class="resumo-numero">5</p>
+            <p class="resumo-legenda">neste período</p>
+          </article>
+          <article class="cartao-resumo cartao-resumo-producao">
+            <h2 class="resumo-rotulo">Em produção</h2>
+            <p class="resumo-numero">3</p>
+            <p class="resumo-legenda">mãos na massa</p>
+          </article>
+          <article class="cartao-resumo">
+            <h2 class="resumo-rotulo">Finalizados</h2>
+            <p class="resumo-numero">2</p>
+            <p class="resumo-legenda">entregues e instalados</p>
+          </article>
+          <article class="cartao-resumo cartao-resumo-recente">
+            <h2 class="resumo-rotulo">Mais recente</h2>
+            <p class="resumo-codigo">PN-2026-014</p>
+            <p class="resumo-legenda">16/10/2026 · Ana Martins</p>
+          </article>
+        </section>
+
+        <!-- Filtros rápidos + busca -->
+        <section id="barra-filtros" aria-label="Filtros">
+          <div id="abas-status" role="group" aria-label="Filtrar por status">
+            <button class="aba-status aba-status-ativa" type="button" aria-pressed="true">Todos 5</button>
+            <button class="aba-status" type="button" aria-pressed="false">Em produção 3</button>
+            <button class="aba-status" type="button" aria-pressed="false">Finalizados 2</button>
+          </div>
+          <div id="busca-e-filtros">
+            <label class="so-leitor-de-tela" for="campo-busca">Buscar cliente, arquiteto ou projeto</label>
+            <input id="campo-busca" type="search" placeholder="Buscar cliente, arquiteto ou projeto">
+            <button class="botao botao-contorno botao-medio" id="botao-mais-filtros" type="button">Mais filtros</button>
+          </div>
+        </section>
+
+        <!-- Lista de orçamentos -->
+        <section id="area-lista" aria-label="Lista de orçamentos">
+          <div id="cabecalho-lista" aria-hidden="true">
+            <span class="titulo-coluna coluna-projeto">PROJETO</span>
+            <span class="titulo-coluna coluna-cliente">CLIENTE</span>
+            <span class="titulo-coluna coluna-arquiteto">ARQUITETO</span>
+            <span class="titulo-coluna coluna-data">DATA</span>
+            <span class="titulo-coluna coluna-status">STATUS</span>
+            <span class="titulo-coluna coluna-acoes">AÇÕES</span>
+          </div>
+
+          <ol id="lista-orcamentos">
+            <li class="linha-orcamento linha-destaque">
+              <div class="coluna-projeto"><strong class="nome-projeto">Cozinha e sala · Apê Horizonte</strong><span class="codigo-orcamento">PN-2026-014 · exemplo principal</span></div>
+              <span class="coluna-cliente" data-rotulo="Cliente">Ana Martins</span>
+              <span class="coluna-arquiteto" data-rotulo="Arquiteto">Beatriz Costa</span>
+              <span class="coluna-data" data-rotulo="Data">16/10/2026</span>
+              <span class="coluna-status"><span class="selo-status selo-em-producao">Em produção</span></span>
+              <div class="coluna-acoes">
+                <a class="botao botao-vermelho botao-mini" href="previa-pdf.html">Visualizar</a>
+                <a class="link-acao" href="editar-orcamento.html">Editar</a>
+                <a class="link-acao" href="#">Duplicar</a>
+              </div>
+            </li>
+
+            <li class="linha-orcamento">
+              <div class="coluna-projeto"><strong class="nome-projeto">Cozinha · Apê Jardim</strong><span class="codigo-orcamento">PN-2026-013</span></div>
+              <span class="coluna-cliente" data-rotulo="Cliente">Lucas Ferreira</span>
+              <span class="coluna-arquiteto" data-rotulo="Arquiteto">Beatriz Costa</span>
+              <span class="coluna-data" data-rotulo="Data">14/10/2026</span>
+              <span class="coluna-status"><span class="selo-status selo-em-producao">Em produção</span></span>
+              <div class="coluna-acoes">
+                <a class="botao botao-contorno botao-mini" href="previa-pdf.html">Visualizar</a>
+                <a class="link-acao" href="editar-orcamento.html">Editar</a>
+                <a class="link-acao" href="#">Duplicar</a>
+              </div>
+            </li>
+
+            <li class="linha-orcamento">
+              <div class="coluna-projeto"><strong class="nome-projeto">Sala · Casa Pátio</strong><span class="codigo-orcamento">PN-2026-012</span></div>
+              <span class="coluna-cliente" data-rotulo="Cliente">Clara Souza</span>
+              <span class="coluna-arquiteto" data-rotulo="Arquiteto">Rafael Lima</span>
+              <span class="coluna-data" data-rotulo="Data">10/10/2026</span>
+              <span class="coluna-status"><span class="selo-status selo-finalizado-escuro">Finalizado</span></span>
+              <div class="coluna-acoes">
+                <a class="botao botao-contorno botao-mini" href="previa-pdf.html">Visualizar</a>
+                <a class="link-acao" href="editar-orcamento.html">Editar</a>
+                <a class="link-acao" href="#">Duplicar</a>
+              </div>
+            </li>
+
+            <li class="linha-orcamento">
+              <div class="coluna-projeto"><strong class="nome-projeto">Cozinha · Casa Vista</strong><span class="codigo-orcamento">PN-2026-011</span></div>
+              <span class="coluna-cliente" data-rotulo="Cliente">Pedro Rocha</span>
+              <span class="coluna-arquiteto" data-rotulo="Arquiteto">Sem arquiteto</span>
+              <span class="coluna-data" data-rotulo="Data">08/10/2026</span>
+              <span class="coluna-status"><span class="selo-status selo-em-producao">Em produção</span></span>
+              <div class="coluna-acoes">
+                <a class="botao botao-contorno botao-mini" href="previa-pdf.html">Visualizar</a>
+                <a class="link-acao" href="editar-orcamento.html">Editar</a>
+                <a class="link-acao" href="#">Duplicar</a>
+              </div>
+            </li>
+
+            <li class="linha-orcamento">
+              <div class="coluna-projeto"><strong class="nome-projeto">Sala · Apê Cedro</strong><span class="codigo-orcamento">PN-2026-010</span></div>
+              <span class="coluna-cliente" data-rotulo="Cliente">Lia Carvalho</span>
+              <span class="coluna-arquiteto" data-rotulo="Arquiteto">Rafael Lima</span>
+              <span class="coluna-data" data-rotulo="Data">03/10/2026</span>
+              <span class="coluna-status"><span class="selo-status selo-finalizado-claro">Finalizado</span></span>
+              <div class="coluna-acoes">
+                <a class="botao botao-contorno botao-mini" href="previa-pdf.html">Visualizar</a>
+                <a class="link-acao" href="editar-orcamento.html">Editar</a>
+                <a class="link-acao" href="#">Duplicar</a>
+              </div>
+            </li>
+          </ol>
+
+          <!-- Rodapé da lista: contagem + paginação -->
+          <div id="rodape-lista">
+            <p id="contagem-registros">Mostrando 5 de 5 orçamentos · mais recentes primeiro</p>
+            <nav id="paginacao" aria-label="Paginação">
+              <a class="botao botao-contorno botao-medio" href="#">← Anterior</a>
+              <span id="pagina-atual" aria-current="page">1</span>
+              <a class="botao botao-contorno botao-medio" href="#">Próxima →</a>
+            </nav>
+          </div>
+        </section>
+
+        <p id="aviso-dados-demonstrativos">Dados demonstrativos. Controles e cálculos representados de forma estática.</p>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

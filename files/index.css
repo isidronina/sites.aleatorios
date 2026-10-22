@@ -1,0 +1,266 @@
+/* =====================================================================
+   PÁGINA INICIAL (index.html) · Marcenaria Piata Norte · versão claude0.2
+   Ordem do arquivo: variáveis > base > botões > cabeçalho > seções > rodapé > celular
+   ===================================================================== */
+
+/* ---------- CORES, FONTES E MEDIDAS USADAS NO SITE INTEIRO ---------- */
+:root {
+  --vermelho: #ad1f23;          /* cor principal da marca (botões e destaques) */
+  --tinta: #111111;             /* cor dos textos principais */
+  --escuro: #141414;            /* fundo do rodapé */
+  --fundo-claro: #f4f6f9;       /* fundo cinza-azulado de algumas seções */
+  --branco: #ffffff;
+  --linha: #dbdbdb;             /* linhas e bordas finas */
+  --texto-suave: #545454;       /* textos de apoio */
+  --placeholder: #8c8c8c;       /* textos de exemplo dentro dos campos */
+  --rosa-suave: #f9ecec;        /* selo e caixa de destaque */
+  --foto-reservada: #e3e8ef;    /* cor dos espaços onde entram as fotos */
+  --cinza-avatar: #eeeeee;
+
+  --fonte-titulo: "Manrope", system-ui, sans-serif;
+  --fonte-texto: "Inter", system-ui, sans-serif;
+
+  --sombra-cartao: 0 4px 14px rgba(0, 0, 0, 0.07);
+  --margem-lateral: 120px;      /* espaço nas laterais das seções (desktop) */
+}
+
+/* ---------- BASE DA PÁGINA ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body#pagina-inicio {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  font-size: 16px;
+  color: var(--tinta);
+  background: var(--branco);
+  -webkit-font-smoothing: antialiased;
+}
+#pagina-inicio h1, #pagina-inicio h2, #pagina-inicio h3, #pagina-inicio p, #pagina-inicio ul, #pagina-inicio ol, #pagina-inicio figure { margin: 0; padding: 0; }
+#pagina-inicio ul, #pagina-inicio ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+#pagina-inicio :focus-visible { outline: 3px solid var(--vermelho); outline-offset: 3px; }
+
+/* ---------- BOTÕES (usados em várias partes da página) ---------- */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border-radius: 999px; border: 1.5px solid transparent;
+  font-family: var(--fonte-texto); font-weight: 600; cursor: pointer; text-align: center;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.botao-pequeno { padding: 11px 20px; font-size: 14px; }
+.botao-grande { padding: 15px 26px; font-size: 15px; }
+.botao-largura-total { width: 100%; }
+.botao-vermelho { background: var(--vermelho); color: var(--branco); }
+.botao-vermelho:hover { background: #8f1519; }
+.botao-contorno { border-color: var(--tinta); color: var(--tinta); background: transparent; }
+.botao-contorno:hover { background: var(--tinta); color: var(--branco); }
+.botao-contorno-claro { border-color: var(--branco); color: var(--branco); background: transparent; }
+.botao-contorno-claro:hover { background: var(--branco); color: var(--tinta); }
+.botao-branco { background: var(--branco); color: var(--tinta); }
+.botao-branco:hover { background: var(--rosa-suave); }
+
+/* ---------- PEÇAS REUTILIZADAS NAS SEÇÕES ---------- */
+.rotulo-secao { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--vermelho); }
+.rotulo-claro { color: var(--branco); }
+.titulo-secao { font-family: var(--fonte-titulo); font-weight: 700; font-size: 40px; line-height: 1.15; }
+.paragrafo-secao { font-size: 17px; line-height: 1.5; color: var(--texto-suave); }
+.nota-pequena { font-size: 13px; color: var(--texto-suave); }
+.nota-clara { color: rgba(255, 255, 255, .75); font-size: 12px; }
+.nota-minima { font-size: 11px; color: var(--placeholder); }
+.cabecalho-secao { display: flex; flex-direction: column; gap: 14px; }
+
+/* Espaços onde as fotos vão entrar (cinza com legenda) */
+.foto-reservada {
+  background: var(--foto-reservada); border-radius: 28px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  padding: 16px; text-align: center; overflow: hidden;
+}
+.foto-reservada img { width: 100%; height: 100%; object-fit: cover; }
+.foto-reservada-rotulo { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--texto-suave); }
+.foto-reservada-legenda { font-size: 13px; color: var(--tinta); }
+
+/* ---------- CABEÇALHO DO SITE (faixa branca no topo) ---------- */
+#cabecalho-site {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 20px var(--margem-lateral);
+  background: var(--branco); border-bottom: 1px solid var(--linha);
+}
+/* Logo (símbolo vermelho "PN" + nome) */
+.logo-marca { display: inline-flex; align-items: center; gap: 10px; }
+.logo-simbolo {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px; border-radius: 12px;
+  background: var(--vermelho); color: var(--branco);
+  font-family: var(--fonte-titulo); font-weight: 700; font-size: 17px;
+}
+.logo-textos { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-pequeno { font-size: 9px; letter-spacing: .12em; color: var(--texto-suave); }
+.logo-nome { white-space: nowrap; font-family: var(--fonte-titulo); font-weight: 800; font-size: 21px; }
+/* Menu do meio */
+#menu-principal { display: flex; gap: 36px; }
+.link-menu { font-size: 15px; padding: 6px 0; border-bottom: 2px solid transparent; }
+.link-menu:hover { border-bottom-color: var(--vermelho); }
+/* Botões Entrar e Cadastrar (lado direito) */
+#botoes-acesso { display: flex; align-items: center; gap: 12px; }
+
+/* ---------- SEÇÃO INÍCIO (fundo cinza-azulado) ---------- */
+#secao-inicio { background: var(--fundo-claro); padding: 56px var(--margem-lateral) 72px; display: flex; flex-direction: column; gap: 40px; }
+#inicio-conteudo { display: flex; align-items: center; gap: 64px; }
+#inicio-texto { display: flex; flex-direction: column; gap: 24px; flex: 0 0 560px; max-width: 560px; }
+.selo-destaque {
+  align-self: flex-start; padding: 6px 14px; border-radius: 999px;
+  background: var(--rosa-suave); color: var(--vermelho); font-size: 12px; font-weight: 600;
+}
+#titulo-principal { font-family: var(--fonte-titulo); font-weight: 700; font-size: 56px; line-height: 1.08; }
+#texto-apresentacao { font-size: 18px; line-height: 1.5; color: var(--texto-suave); }
+#chamada-whatsapp { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+#inicio-foto { flex: 1; min-height: 440px; background: var(--foto-reservada); }
+/* Faixa com os 3 diferenciais */
+#faixa-diferenciais { display: flex; gap: 16px; }
+.diferencial {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 20px; border-radius: 999px; background: var(--branco); box-shadow: var(--sombra-cartao);
+  font-size: 14px; font-weight: 600;
+}
+.diferencial-sinal { color: var(--vermelho); font-size: 15px; }
+
+/* ---------- SEÇÃO SOBRE (fundo branco) ---------- */
+#secao-sobre { padding: 80px var(--margem-lateral); display: flex; flex-direction: column; gap: 72px; }
+#sobre-apresentacao { display: flex; align-items: center; gap: 64px; }
+#sobre-foto { flex: 0 0 480px; height: 480px; }
+#sobre-texto { display: flex; flex-direction: column; gap: 18px; flex: 1; }
+#caixa-destaque-sobre { display: flex; flex-direction: column; gap: 6px; padding: 20px 24px; border-radius: 20px; background: var(--rosa-suave); }
+#caixa-destaque-sobre strong { font-size: 16px; }
+#caixa-destaque-sobre p { font-size: 14px; color: var(--texto-suave); }
+/* Equipe */
+#sobre-equipe { display: flex; flex-direction: column; gap: 20px; }
+#titulo-equipe { font-family: var(--fonte-titulo); font-weight: 700; font-size: 32px; }
+.paragrafo-equipe { font-size: 15px; color: var(--texto-suave); }
+#lista-equipe { display: flex; gap: 20px; }
+.cartao-pessoa { flex: 1; display: flex; align-items: center; gap: 16px; padding: 20px; border-radius: 24px; background: var(--fundo-claro); }
+.foto-pessoa {
+  flex: 0 0 72px; height: 72px; border-radius: 50%; background: var(--cinza-avatar);
+  display: flex; align-items: center; justify-content: center; font-size: 10px; letter-spacing: .1em; color: var(--texto-suave);
+}
+.dados-pessoa { display: flex; flex-direction: column; gap: 2px; }
+.nome-pessoa { font-family: var(--fonte-titulo); font-weight: 700; font-size: 18px; }
+.cargo-pessoa { font-size: 14px; color: var(--texto-suave); }
+
+/* ---------- SEÇÃO PROJETOS (fundo cinza-azulado, cartões brancos) ---------- */
+#secao-projetos { background: var(--fundo-claro); padding: 80px var(--margem-lateral); display: flex; flex-direction: column; gap: 40px; }
+#secao-projetos .titulo-secao { font-size: 42px; }
+#secao-projetos .paragrafo-secao { font-size: 16px; }
+#galeria-projetos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.cartao-projeto { display: flex; flex-direction: column; gap: 12px; padding: 16px; border-radius: 24px; background: var(--branco); box-shadow: var(--sombra-cartao); }
+.foto-projeto { height: 170px; border-radius: 16px; }
+.tipo-projeto { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--vermelho); }
+.nome-projeto { font-family: var(--fonte-titulo); font-weight: 700; font-size: 22px; }
+.descricao-projeto { font-size: 14px; line-height: 1.45; color: var(--texto-suave); }
+
+/* ---------- SEÇÃO PROCESSO (4 etapas) ---------- */
+#secao-processo { padding: 80px var(--margem-lateral); display: flex; flex-direction: column; gap: 40px; }
+#secao-processo .titulo-secao { font-size: 38px; }
+#lista-etapas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.cartao-etapa { display: flex; flex-direction: column; gap: 12px; padding: 24px; border-radius: 24px; background: var(--branco); box-shadow: var(--sombra-cartao); }
+.numero-etapa {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; border-radius: 50%; background: var(--vermelho); color: var(--branco);
+  font-family: var(--fonte-titulo); font-weight: 700; font-size: 16px;
+}
+.titulo-etapa { font-family: var(--fonte-titulo); font-weight: 700; font-size: 20px; }
+.texto-etapa { font-size: 14px; line-height: 1.45; color: var(--texto-suave); }
+
+/* ---------- SEÇÃO CONTATO (caixa vermelha) ---------- */
+#secao-contato { padding: 20px var(--margem-lateral) 80px; }
+#caixa-contato { display: flex; align-items: center; gap: 56px; padding: 56px; border-radius: 32px; background: var(--vermelho); }
+#contato-convite { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; color: var(--branco); }
+#titulo-contato { font-family: var(--fonte-titulo); font-weight: 700; font-size: 44px; line-height: 1.12; }
+#texto-contato { font-size: 17px; line-height: 1.5; opacity: .92; }
+/* Formulário branco dentro da caixa vermelha */
+#formulario-contato { flex: 0 0 520px; display: flex; flex-direction: column; gap: 14px; padding: 32px; border-radius: 24px; background: var(--branco); color: var(--tinta); }
+.campo { display: flex; flex-direction: column; gap: 6px; }
+.campo-rotulo { font-size: 13px; font-weight: 600; }
+.campo-entrada {
+  width: 100%; padding: 14px; border-radius: 12px; border: 1px solid var(--linha);
+  background: var(--fundo-claro); font-family: var(--fonte-texto); font-size: 14px; color: var(--tinta);
+}
+.campo-entrada::placeholder { color: var(--placeholder); }
+.campo-texto-longo { min-height: 96px; resize: vertical; }
+
+/* ---------- RODAPÉ (fundo escuro) ---------- */
+#rodape-site { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 40px var(--margem-lateral); background: var(--escuro); color: var(--branco); }
+#rodape-assinatura { display: flex; flex-direction: column; gap: 4px; }
+#rodape-nome { font-family: var(--fonte-titulo); font-weight: 700; font-size: 22px; }
+#rodape-frase { font-size: 13px; opacity: .7; }
+#rodape-acoes { display: flex; align-items: center; gap: 12px; }
+#link-voltar-topo { font-size: 13px; opacity: .8; }
+#link-voltar-topo:hover { opacity: 1; text-decoration: underline; }
+
+/* =====================================================================
+   TELAS MÉDIAS E CELULAR
+   ===================================================================== */
+@media (max-width: 1200px) {
+  :root { --margem-lateral: 48px; }
+  #inicio-texto { flex-basis: 480px; max-width: 480px; }
+  #titulo-principal { font-size: 46px; }
+  #galeria-projetos, #lista-etapas { grid-template-columns: repeat(2, 1fr); }
+  #formulario-contato { flex-basis: 440px; }
+  #titulo-contato { font-size: 38px; }
+}
+
+@media (max-width: 900px) {
+  :root { --margem-lateral: 20px; }
+
+  /* Cabeçalho: some o menu do meio, ficam logo + Entrar + Cadastrar */
+  #cabecalho-site { padding: 14px var(--margem-lateral); }
+  #menu-principal { display: none; }
+  .logo-simbolo { width: 36px; height: 36px; font-size: 15px; }
+  .logo-nome { font-size: 18px; }
+  #botoes-acesso { gap: 8px; }
+  #botoes-acesso .botao-pequeno { padding: 9px 14px; font-size: 13px; }
+
+  /* Início */
+  #secao-inicio { padding: 28px var(--margem-lateral) 36px; gap: 24px; }
+  #inicio-conteudo { flex-direction: column; align-items: stretch; gap: 24px; }
+  #inicio-texto { flex: none; max-width: none; gap: 20px; }
+  #titulo-principal { font-size: 36px; }
+  #texto-apresentacao { font-size: 16px; }
+  #chamada-whatsapp { align-items: stretch; }
+  #inicio-foto { min-height: 260px; flex: none; }
+  #faixa-diferenciais { flex-direction: column; gap: 10px; }
+
+  /* Sobre */
+  #secao-sobre { padding: 48px var(--margem-lateral); gap: 40px; }
+  #sobre-apresentacao { flex-direction: column; align-items: stretch; gap: 24px; }
+  #sobre-foto { flex: none; height: 280px; }
+  .titulo-secao { font-size: 30px; }
+  .paragrafo-secao { font-size: 15px; }
+  #titulo-equipe { font-size: 26px; }
+  #lista-equipe { flex-direction: column; gap: 12px; }
+
+  /* Projetos e Processo */
+  #secao-projetos, #secao-processo { padding: 48px var(--margem-lateral); gap: 28px; }
+  #secao-projetos .titulo-secao, #secao-processo .titulo-secao { font-size: 30px; }
+  #galeria-projetos { grid-template-columns: 1fr; gap: 16px; }
+  .foto-projeto { height: 190px; }
+  #lista-etapas { grid-template-columns: 1fr; gap: 12px; }
+
+  /* Contato */
+  #secao-contato { padding: 8px var(--margem-lateral) 48px; }
+  #caixa-contato { flex-direction: column; align-items: stretch; gap: 28px; padding: 28px 24px; border-radius: 28px; }
+  #contato-convite { align-items: stretch; }
+  #titulo-contato { font-size: 32px; }
+  #texto-contato { font-size: 15px; }
+  #formulario-contato { flex: none; padding: 20px; }
+
+  /* Rodapé */
+  #rodape-site { flex-direction: column; align-items: flex-start; gap: 20px; padding: 32px var(--margem-lateral); }
+  #rodape-acoes { flex-wrap: wrap; }
+}
+
+/* Respeita quem pede menos movimento no sistema */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .botao { transition: none; }
+}
